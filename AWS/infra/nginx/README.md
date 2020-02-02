@@ -1,7 +1,7 @@
 # Here we are going to run Nginx in a docker container on ec2 instance using Terraform
 
 To execute docker commands on remote host we need to open tcp port, in our case tcp://{aws.instance.publicIp}:1234/
-Run a socat container to redirect the Docker API exposed on the unix domain socket in Linux to the port of your choice on your OS host:
+Run a socat container on ec2 to redirect the Docker API exposed on the unix domain socket in Linux to the port of your choice on your OS host:
 docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p 127.0.0.1:1234:1234 bobrik/socat TCP-LISTEN:1234,fork UNIX-CONNECT:/var/run/docker.sock
 
 # Commands :
