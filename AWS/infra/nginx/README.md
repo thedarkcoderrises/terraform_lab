@@ -1,11 +1,11 @@
-*Here we are going to run Nginx in a docker container on ec2 instance using Terraform
+# Here we are going to run Nginx in a docker container on ec2 instance using Terraform
 
 To execute docker commands on remote host we need to open tcp port, in our case tcp://{aws.instance.publicIp}:1234/
 Run a socat container to redirect the Docker API exposed on the unix domain socket in Linux to the port of your choice on your OS host:
 docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p 127.0.0.1:1234:1234 bobrik/socat TCP-LISTEN:1234,fork UNIX-CONNECT:/var/run/docker.sock
 
-#Commands :
-#Initialisation
+# Commands :
+# Initialization
 ```
 Abhijeets-MacBook-Pro:nginx javabrain$ terraform init
 
@@ -38,7 +38,7 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-#Import existing EC2
+# Import existing EC2
 ```
 Abhijeets-MacBook-Pro:nginx javabrain$ terraform import aws_instance.JB-TDCR-EC2-T2-MED-30G i-0b84ea6f7e41ef2d9
 aws_instance.JB-TDCR-EC2-T2-MED-30G: Importing from ID "i-0b84ea6f7e41ef2d9"...
@@ -71,7 +71,7 @@ to templates that consist entirely of a single interpolation sequence.
 
 ```
 
-#Plan 
+# Plan 
 ```
 Abhijeets-MacBook-Pro:nginx javabrain$ terraform plan
 Refreshing Terraform state in-memory prior to plan...
@@ -149,7 +149,7 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
 
-#Apply
+# Apply
 ```
 Abhijeets-MacBook-Pro:nginx javabrain$ terraform apply
 aws_instance.JB-TDCR-EC2-T2-MED-30G: Refreshing state... [id=i-0b84ea6f7e41ef2d9]
@@ -230,7 +230,7 @@ Abhijeets-MacBook-Pro:nginx javabrain$
 ```
 
 
-#Result
+# Result
 ```
 [root@ip-192-168-10-240 ec2-user]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
