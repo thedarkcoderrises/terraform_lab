@@ -15,7 +15,7 @@ resource "aws_instance" "ec2_label" {
 
   provisioner "file" {
     source      = "${path.module}/docker/jenkins.sh"
-    destination = "/home/ec2-user/docker/jenkins.sh"
+    destination = "/home/ec2-user/jenkins.sh"
 
     connection {
       host = self.public_ip
@@ -26,9 +26,22 @@ resource "aws_instance" "ec2_label" {
   }
 
   provisioner "remote-exec" {
+    connection {
+      host = self.public_ip
+      type = "ssh"
+      user = "ec2-user"
+      timeout = "5m"
+      private_key = "${file("~/.ssh/tf-manual-key.pem")}"
+    }
+
     inline = [
-      "cd /home/ec2-user/docker/",
-      "sudo sh jenkins.sh"
+      "sudo yum update -y",
+      "sudo yum -y install docker",
+      "sudo service docker start",
+      "sudo usermod -a -G docker ec2-user",
+      "sudo chmod 666 /var/run/docker.sock",
+      "docker info",
+      "sudo sh /home/ec2-user/jenkins.sh"
     ]
   }
 }
