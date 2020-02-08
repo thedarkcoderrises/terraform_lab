@@ -11,3 +11,10 @@ variable "ec2_count" {
 }
 
 variable "subnet_id" {}
+
+
+variable "associate_public_ip_address" {
+  default = "true"
+}
+
+variable "security_grp_id"{}

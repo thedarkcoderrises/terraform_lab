@@ -29,12 +29,12 @@ variable "pub_route_cidr" {
   default = "0.0.0.0/0"
 }
 
-variable "route_table_id" {}
+variable "pub_route_id" {}
 
 variable "subnet_id" {}
 
-variable "pvt_subnet_cidr" {}
+# variable "pvt_subnet_cidr" {}
 
-variable "pvt_subnet_id" {}
+# variable "pvt_subnet_id" {}
 
-variable "pvt_route_id" {}
+# variable "pvt_route_id" {}
