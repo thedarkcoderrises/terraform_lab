@@ -20,7 +20,7 @@ docker network connect bunit b4
 
 
 NGNX
-docker run -d -v /Users/javabrain/Documents/MyWorkspace/terraform_infra/ActiveMQ/nginx/nginx.conf:/etc/nginx/nginx.conf -v /Users/javabrain/Documents/MyWorkspace/terraform_infra/ActiveMQ/nginx/proxy.conf:/etc/nginx/proxy.conf --name ngnx -p 80:80 -p 616:61616  -p 626:61626 nginx:latest
+docker run -d -v /Users/javabrain/Documents/MyWorkspace/terraform_infra/Nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v /Users/javabrain/Documents/MyWorkspace/terraform_infra/Nginx/nginx/proxy.conf:/etc/nginx/proxy.conf --name ngnx -p 80:80 -p 616:61616  -p 626:61626 nginx:latest
 docker network connect bunit ngnx
 
 
